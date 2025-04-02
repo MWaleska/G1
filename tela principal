@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+            padding-top: 60px; 
+        }
+
+        header {
+            background-color: #d00000;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999; 
+        }
+
+        .logo img {
+            width: 120px;
+        }
+    
+        footer {
+            background-color: #d00000;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        
+    
+        .menu-lateral {
+            background-color: #fff;
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000; 
+            overflow-y: auto;
+            transition: left 0.3s ease;
+        }
+
+        .menu-lateral.open {
+            left: 0;
+        }
+
+        .menu-lateral h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #d00000;
+        }
+
+        .menu-lateral ul {
+            list-style-type: none;
+        }
+
+        .menu-lateral ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            padding: 10px 0;
+            display: block;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu-lateral ul li a:hover {
+            background-color: #f4f4f4;
+        }
+
+        .menu-toggle-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background-color: #d00000;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 2000; 
+        }
+
+        .conteudo {
+            margin-left: 0;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+            flex-grow: 1;
+        }
+
+        .noticia h2 {
+            color: #d00000;
+        }
+
+        .noticia p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .noticia a {
+            color: #d00000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .noticia a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo_fundo_transparente.png" alt="Logo G1">
+        </div>
+    </header>
+    
+    <div class="2t">   <button class="menu-toggle-btn" id="menuToggleBtn" onclick="toggleMenu()">☰ Menu</button> </div>
+
+
+    <div class="menu-lateral" id="menuLateral">
+        <h3>Editorias</h3>
+        <ul>
+            <li><a href="#">Jogos</a></li>
+            <li><a href="#">Guia de Compras</a></li>
+            <li><a href="#">Regiões</a></li>
+            <li><a href="#">Telejornais</a></li>
+            <li><a href="#">Globonews</a></li>
+            <li><a href="#">Saiba Mais</a></li>
+            <li><a href="#">Blogs e Colunas</a></li>
+            <li><a href="#">Viagem de Náufrago</a></li>
+            <li><a href="#">Podcasts</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="#">Vídeos</a></li>
+            <li><a href="#">Webstories</a></li>
+            <li><a href="#">Especial Publicitário</a></li>
+            <li><a href="#">Princípios Editoriais</a></li>
+            <li><a href="#">Sobre o G1</a></li>
+            <li><a href="#">App G1</a></li>
+            <li><a href="#">Equipe</a></li>
+            <li><a href="#">Entre em Contato</a></li>
+            <li><a href="#">Termos de Uso do G1</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+        </ul>
+    </div>
+
+    <div class="conteudo">
+        <div class="noticia">
+            <h2>Notícia em Destaque</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia...</p>
+            <a href="#">Leia mais</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 G1. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menuLateral');
+            const body = document.body;
+            const button = document.getElementById('menuToggleBtn');
+        
+            if (menu.classList.contains('open')) {
+                menu.classList.remove('open');
+                body.style.marginLeft = '0'; 
+                button.style.display = 'block'; 
+            } else {
+                menu.classList.add('open');
+                body.style.marginLeft = '250px'; 
+                button.style.display = 'none'; 
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menuLateral');
+            const menuButton = document.getElementById('menuToggleBtn');
+        
+            if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
+                
+                menu.classList.remove('open');
+                document.body.style.marginLeft = '0'; 
+                menuButton.style.display = 'block'; 
+            }
+        });
+    </script>
+
+</body>
+</html>
